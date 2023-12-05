@@ -36,11 +36,11 @@ deleteBtn.addEventListener("click", function(){
         
         // delete selected leads
         const checkboxInputsNL = document.getElementsByName('lead');
-        let checkboxArray = Array.from(checkboxInputsNL);   // to copy a NodeList into an array
+        let checkboxArray = Array.from(checkboxInputsNL);   // copy the NodeList into a new array
         for (let i=0; i<checkboxArray.length; i++){
 
             if (checkboxArray[i].checked){
-                myLeads.splice(i, 1);       // to remove element at index i from the array
+                myLeads.splice(i, 1);       // remove element at index i from the array myLeads
                 checkboxArray.splice(i,1);
                 i--;
             }
@@ -79,7 +79,6 @@ tabBtn.addEventListener("click", function(){
 function render(leads) {
     let listItems = "";
     for (let i=0; i<leads.length; i++){
-        // TEMPLATE STRING `` = multiline string
         listItems += `
         <li>
             <a target='_blank' href='${leads[i]}'>${leads[i]} </a>
@@ -96,10 +95,10 @@ deleteAllBtn.addEventListener("dblclick", function(){
 
 })
 
-// to add a function when a button is clicked from JS, without modifying the html
+// when save input button is clicked the value of the input is saved 
 inputBtn.addEventListener("click", function(){
-    myLeads.push(inputEl.value);    // to take the value of a text input field
-    inputEl.value = ""; // to clear out the input field when the button is clicked
+    myLeads.push(inputEl.value);    
+    inputEl.value = ""; 
     
     localStorage.setItem("myLeads", JSON.stringify(myLeads));
     
@@ -108,17 +107,4 @@ inputBtn.addEventListener("click", function(){
 })
 
 
-
-// alternative way to .innerHTML
-// const li = document.createElement("li");
-// li.textContent = myLeads[i];
-// ulEl.append(li);
-
-// WORK WITH LOCAL STORAGE
-// localStorage.setItem("key", "value");
-// localStorage.getItem("key");
-// localStorage.clear()
-
-// myString = JSON.stringify(myArray) --> to turn an array into a string
-// myArray = JSON.parse(myString) --> to turn a stringified array back into an array
 
